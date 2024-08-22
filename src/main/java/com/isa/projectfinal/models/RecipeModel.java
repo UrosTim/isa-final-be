@@ -17,4 +17,5 @@ public class RecipeModel {
     private String description;
     private String imagePath;
     private List<IngredientModel> ingredients;
+    private UserRecipesModel user;
 }

@@ -24,6 +24,11 @@ public class UserController {
 
     private final IUserService userService;
 
+    @GetMapping("{id}")
+    public UserModel getUser(@PathVariable Integer id) {
+        return userService.getUser(id);
+    }
+
     @GetMapping("with-recipes")
     public List<UserRecipesModel> getUserListWithRecipes() {
         return userService.getAllUsersWithRecipes();

@@ -8,6 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import java.util.List;
 
 public interface IUserService {
+    UserModel getUser(Integer id);
     List<UserModel> getAllUsers();
     UserPageModel getAllUsersPage(PageRequest pageRequest);
     List<UserRecipesModel> getAllUsersWithRecipes();

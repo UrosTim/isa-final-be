@@ -16,12 +16,12 @@ public class RecipeService implements IRecipeService {
 
     @Override
     public RecipeModel getRecipe(Integer id) {
-        return RecipeMapper.toModel(recipeRepository.findById(id).orElseThrow(() -> new RuntimeException("Recipe not found")));
+        return RecipeMapper.toModelWithIngredients(recipeRepository.findById(id).orElseThrow(() -> new RuntimeException("Recipe not found")));
     }
 
     @Override
     public List<RecipeModel> getAllRecipes() {
-        return RecipeMapper.toListModel(recipeRepository.findAll());
+        return RecipeMapper.toListModelWithUser(recipeRepository.findAll());
     }
 
     @Override

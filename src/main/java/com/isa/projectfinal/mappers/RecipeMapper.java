@@ -50,4 +50,21 @@ public class RecipeMapper {
         }
         return list;
     }
+
+    public static RecipeModel toModelWithUser(Recipe recipe) {
+        return RecipeModel.builder()
+                .id(recipe.getId())
+                .title(recipe.getTitle())
+                .description(recipe.getDescription())
+                .imagePath(recipe.getImagePath())
+                .user(UserRecipesMapper.toModel(recipe.getUser()))
+                .build();
+    }
+    public static List<RecipeModel> toListModelWithUser(List<Recipe> entityList) {
+        var list = new ArrayList<RecipeModel>();
+        for (var entity : entityList) {
+            list.add(toModelWithUser(entity));
+        }
+        return list;
+    }
 }

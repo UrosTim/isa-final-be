@@ -1,9 +1,11 @@
 package com.isa.projectfinal.mappers;
 
 import com.isa.projectfinal.entities.User;
+import com.isa.projectfinal.models.RegisterUserModel;
 import com.isa.projectfinal.models.UserModel;
 import com.isa.projectfinal.models.UserPageModel;
 import org.springframework.data.domain.Page;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +43,15 @@ public class UserMapper {
         user.setFirstName(model.getFirstName());
         user.setLastName(model.getLastName());
         user.setPassword(model.getPassword());
+        return user;
+    }
+
+    public static User toEntity(RegisterUserModel model, PasswordEncoder passwordEncoder) {
+        User user = new User();
+        user.setFirstName(model.getFirstName());
+        user.setLastName(model.getLastName());
+        user.setEmail(model.getEmail());
+        user.setPassword(passwordEncoder.encode(model.getPassword()));
         return user;
     }
 }

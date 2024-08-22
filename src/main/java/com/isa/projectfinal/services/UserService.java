@@ -20,6 +20,12 @@ public class UserService implements IUserService {
     private final IUserRepository userRepository;
     private final IUserRecipesRepository userRecipesRepository;
 
+
+    @Override
+    public UserModel getUser(Integer id) {
+        return UserMapper.toModel(userRepository.findById(id).orElseThrow(() -> new RuntimeException("User Not Found")));
+    }
+
     @Override
     public List<UserModel> getAllUsers() {
         return UserMapper.toListModel(userRepository.findAll());

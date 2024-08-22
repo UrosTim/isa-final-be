@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserRecipesMapper {
-    public static UserRecipesModel toModel(UserRecipes entity) {
+    public static UserRecipesModel toModelRecipes(UserRecipes entity) {
         return UserRecipesModel.builder()
                 .id(entity.getId())
                 .email(entity.getEmail())
@@ -20,8 +20,17 @@ public class UserRecipesMapper {
     public static List<UserRecipesModel> toListModel(List<UserRecipes> entityList) {
         var list = new ArrayList<UserRecipesModel>();
         for (var entity : entityList) {
-            list.add(toModel(entity));
+            list.add(toModelRecipes(entity));
         }
         return list;
+    }
+
+    public static UserRecipesModel toModel(UserRecipes entity) {
+        return UserRecipesModel.builder()
+                .id(entity.getId())
+                .email(entity.getEmail())
+                .firstName(entity.getFirstName())
+                .lastName(entity.getLastName())
+                .build();
     }
 }
