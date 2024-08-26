@@ -39,5 +39,11 @@ public class RecipeService implements IRecipeService {
         return RecipeMapper.toModel(recipeRepository.save(RecipeMapper.toEntity(recipe)));
     }
 
+    @Override
+    public void delete(Integer id) {
+        var recipe = recipeRepository.findById(id).orElseThrow(() -> new RuntimeException("Recipe not found"));
+        recipeRepository.delete(recipe);
+    }
+
 
 }

@@ -10,4 +10,5 @@ public interface IRecipeService {
     List<RecipeModel> getAllRecipesWithIngredients();
     RecipeModel create(RecipeModel recipe);
     RecipeModel update(RecipeModel recipe);
+    void delete(Integer id);
 }

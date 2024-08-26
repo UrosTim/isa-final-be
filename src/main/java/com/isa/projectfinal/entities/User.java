@@ -2,9 +2,11 @@ package com.isa.projectfinal.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.GrantedAuthority;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -28,9 +30,14 @@ public class User implements UserDetails {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "role")
+    private String role;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_" + getRole()));
+        return authorities;
     }
 
     @Override

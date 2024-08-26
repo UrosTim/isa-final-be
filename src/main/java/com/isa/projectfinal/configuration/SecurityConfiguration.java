@@ -1,5 +1,6 @@
 package com.isa.projectfinal.configuration;
 
+import com.isa.projectfinal.constants.RoleConstants;
 import com.isa.projectfinal.filters.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -31,18 +32,21 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers("/auth/**")
                 .permitAll()
-//                .requestMatchers("/user/**")
-//                .permitAll()
-                .requestMatchers("/recipe/**")
-                .permitAll()
                 .anyRequest()
-                .authenticated()
+                .permitAll()
+//                .requestMatchers("/user/**")
+//                .hasRole(RoleConstants.ADMIN)
+//                .requestMatchers("/recipe/**")
+//                .permitAll()
+//                .anyRequest()
+//                .authenticated()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+//                .cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
 
         return http.build();
     }

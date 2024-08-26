@@ -17,6 +17,7 @@ public class UserMapper {
                 .email(entity.getEmail())
                 .firstName(entity.getFirstName())
                 .lastName(entity.getLastName())
+                .role(entity.getRole())
                 .build();
     }
 
@@ -36,13 +37,14 @@ public class UserMapper {
                 .build();
     }
 
-    public static User toEntity(UserModel model) {
+    public static User toEntity(UserModel model, PasswordEncoder passwordEncoder) {
         User user = new User();
         user.setId(model.getId());
         user.setEmail(model.getEmail());
         user.setFirstName(model.getFirstName());
         user.setLastName(model.getLastName());
-        user.setPassword(model.getPassword());
+        user.setPassword(passwordEncoder.encode(model.getPassword()));
+        user.setRole(model.getRole());
         return user;
     }
 
@@ -52,6 +54,7 @@ public class UserMapper {
         user.setLastName(model.getLastName());
         user.setEmail(model.getEmail());
         user.setPassword(passwordEncoder.encode(model.getPassword()));
+        user.setRole(model.getRole());
         return user;
     }
 }
