@@ -1,5 +1,6 @@
 package com.isa.projectfinal.filters;
 
+import com.isa.projectfinal.repositories.ITokenRepository;
 import com.isa.projectfinal.services.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -23,6 +24,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
+    private final ITokenRepository tokenRepository;
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
 
@@ -47,6 +49,19 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
             if (userEmail != null && authentication == null) {
                 UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
+
+                var isTokenValid = tokenRepository.findByToken(jwt)
+                        .map(t -> !t.isExpired() && !t.isRevoked())
+                        .orElse(false);
+
+                var isRefreshTokenValid = false;
+                var refreshToken = tokenRepository.findByRefreshToken(jwt);
+
+                if (refreshToken.isPresent()) {
+                    isRefreshTokenValid = jwtService.isTokenValid(refreshToken.get().refreshToken, userDetails);
+                }
+
+                if (!(isTokenValid || isRefreshTokenValid)) throw new AuthorizationServiceException("Invalid token");
 
                 if (jwtService.isTokenValid(jwt, userDetails)) {
                     UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(

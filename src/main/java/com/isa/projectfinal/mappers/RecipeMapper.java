@@ -9,7 +9,7 @@ import java.util.List;
 public class RecipeMapper {
     public static RecipeModel toModel(Recipe entity) {
         return RecipeModel.builder()
-                .id(entity.getId())
+//                .id(entity.getId())
                 .title(entity.getTitle())
                 .description(entity.getDescription())
                 .imagePath(entity.getImagePath())
@@ -26,7 +26,7 @@ public class RecipeMapper {
 
     public static Recipe toEntity(RecipeModel model) {
         Recipe entity = new Recipe();
-        entity.setId(model.getId());
+//        entity.setId(model.getId());
         entity.setTitle(model.getTitle());
         entity.setDescription(model.getDescription());
         entity.setImagePath(model.getImagePath());

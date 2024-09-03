@@ -32,21 +32,17 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers("/auth/**")
                 .permitAll()
+                .requestMatchers("/user/**")
+                .hasAnyRole(RoleConstants.ADMIN)
                 .anyRequest()
-                .permitAll()
-//                .requestMatchers("/user/**")
-//                .hasRole(RoleConstants.ADMIN)
-//                .requestMatchers("/recipe/**")
-//                .permitAll()
-//                .anyRequest()
-//                .authenticated()
+                .authenticated()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authenticationProvider(authenticationProvider)
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-//                .cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .cors().configurationSource(corsConfigurationSource());
 
         return http.build();
     }
