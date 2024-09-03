@@ -45,12 +45,18 @@ public class RecipeController {
         return new ResponseEntity<>(recipeService.create(recipeModel), HttpStatus.CREATED);
     }
 
-    @PostMapping("update")
+    @PutMapping("update")
     public ResponseEntity<?> update(@RequestBody @Valid RecipeModel recipeModel, BindingResult result){
         if (result.hasErrors()){
             return new ResponseEntity<>("Unsuccessful.", HttpStatus.BAD_REQUEST);
         }
 
         return new ResponseEntity<>(recipeService.update(recipeModel), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("delete")
+    public ResponseEntity<?> delete(Integer id){
+        recipeService.delete(id);
+        return ResponseEntity.ok("Deleted Successfully");
     }
 }

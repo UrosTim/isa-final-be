@@ -1,9 +1,11 @@
 package com.isa.projectfinal.mappers;
 
 import com.isa.projectfinal.entities.User;
+import com.isa.projectfinal.models.RegisterUserModel;
 import com.isa.projectfinal.models.UserModel;
 import com.isa.projectfinal.models.UserPageModel;
 import org.springframework.data.domain.Page;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ public class UserMapper {
                 .email(entity.getEmail())
                 .firstName(entity.getFirstName())
                 .lastName(entity.getLastName())
+                .role(entity.getRole())
                 .build();
     }
 
@@ -34,13 +37,24 @@ public class UserMapper {
                 .build();
     }
 
-    public static User toEntity(UserModel model) {
+    public static User toEntity(UserModel model, PasswordEncoder passwordEncoder) {
         User user = new User();
         user.setId(model.getId());
         user.setEmail(model.getEmail());
         user.setFirstName(model.getFirstName());
         user.setLastName(model.getLastName());
-        user.setPassword(model.getPassword());
+        user.setPassword(passwordEncoder.encode(model.getPassword()));
+        user.setRole(model.getRole());
+        return user;
+    }
+
+    public static User toEntity(RegisterUserModel model, PasswordEncoder passwordEncoder) {
+        User user = new User();
+        user.setFirstName(model.getFirstName());
+        user.setLastName(model.getLastName());
+        user.setEmail(model.getEmail());
+        user.setPassword(passwordEncoder.encode(model.getPassword()));
+        user.setRole(model.getRole());
         return user;
     }
 }

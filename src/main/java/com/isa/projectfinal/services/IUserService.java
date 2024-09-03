@@ -8,10 +8,11 @@ import org.springframework.data.domain.PageRequest;
 import java.util.List;
 
 public interface IUserService {
+    UserModel getUser(Integer id);
     List<UserModel> getAllUsers();
     UserPageModel getAllUsersPage(PageRequest pageRequest);
     List<UserRecipesModel> getAllUsersWithRecipes();
     UserModel create(UserModel user);
     UserModel update(UserModel user);
-    UserModel delete(Integer id);
+    void delete(Integer id);
 }

@@ -1,5 +1,6 @@
 package com.isa.projectfinal.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -26,8 +27,8 @@ public class UserRecipes {
     private String password;
 
     @OneToMany(
-            mappedBy = "userId",
-            fetch = FetchType.LAZY,
+            mappedBy = "user",
             cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Recipe> recipes;
 }
