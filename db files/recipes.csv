@@ -1,0 +1,17 @@
+#,id,title,description,user_id,image_path
+1,1,Ramen,Naruto's favorite,1,/Naruto-Ramen-Main.jpg
+2,2,Sushi,Raw fish.,2,/Sushi.jpg
+3,3,Mac&Cheese,American dinner,4,/Macaroni-And-Cheese.jpg
+4,4,Lasagna,Greatest pasta dish.,5,/Lasagna.jpg
+5,5,Strawberry Sorbet,"Strawberry sorbet is a delightful frozen dessert that captures the essence of ripe, juicy strawberries. Made with just a few simple ingredients, it’s a refreshing treat perfect for warm days. Imagine taking a spoonful and being greeted by intense strawberry flavor—sweet, tangy, and vibrant. The texture is smooth and icy, reminiscent of gelato. Whether served alone or paired with crisp sugar cookies, strawberry sorbet is a striking finale to any meal. You can make it using either the Simple Freezer Sorbet method (requires a food processor and freezer) or the Churned Sorbet method (using an ice cream maker). Whichever route you choose, this ruby-red dessert promises pure delight!",2,/Strawberry-Sorbet.jpg
+6,6,Deviled Eggs,"Baffoni Farm egg, bacon lardon, and crispy shallots",6,/deviled-eggs.jpg
+7,7,Short Ribs,"Soy-braised Blackbird Farm short ribs, shiitake and snap pea risotto",7,/short-ribs.jpg
+8,8,Lemon Herb Grilled Chicken,"Tender chicken breasts marinated in lemon, garlic, and fresh herbs, then grilled to perfection",6,/Lemon-Herb-Grilled-Chicken.jpg
+9,9,Caprese Salad with Balsamic Glaze,"Juicy tomatoes, creamy mozzarella, and fragrant basil drizzled with tangy balsamic reduction",8,/caprese-salad.jpg
+10,10,Creamy Mushroom Risotto,"Arborio rice cooked in a rich mushroom broth, finished with sautéed mushrooms and Parmesan cheese.",9,/mushroom-risotto.jpg
+11,11,Spicy Shrimp Tacos,"Crispy shrimp seasoned with chili powder, topped with slaw, avocado, and a zesty lime crema.",10,/Spicy-Shrimp-Tacos.jpg
+12,12,Chocolate Avocado Mousse,"Silky-smooth dessert made with ripe avocados, cocoa powder, and a touch of honey.",11,/Chocolate-Avocado-Mousse.jpg
+13,13,Greek Quinoa Salad,"Nutrient-packed quinoa tossed with cucumber, cherry tomatoes, feta cheese, and Kalamata olives.",12,/Greek-Quinoa-Salad.jpeg
+14,14,Greek Salad with Lemon-Oregano Dressing,"A refreshing salad featuring crisp cucumbers, juicy tomatoes, Kalamata olives, and creamy feta cheese. Tossed in a zesty lemon-oregano dressing.",12,/Greek-Salad-with-Lemon-Oregano-Dressing.jpg
+15,21,Test1,Test recipe updated,12,/testImagepath.jpg
+16,23,Test,Test recipe,12,/testImagepath.jpg
